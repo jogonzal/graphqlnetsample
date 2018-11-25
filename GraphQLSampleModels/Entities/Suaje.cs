@@ -48,6 +48,6 @@ namespace DataRepositories.Entities
 
 		public decimal SuajeRadio { get; set; }
 
-		public ICollection<Etiqueta> SuajeEtiquetas { get; set; }
+		public ICollection<SuajeEtiqueta> SuajeEtiquetas { get; set; }
 	}
 }

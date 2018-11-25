@@ -55,9 +55,9 @@ namespace DataRepositories.Entities
 
 		public bool EtiquetaBarnizado { get; set; }
 
-		public List<Suaje> EtiquetaListaSuajes { get; set; }
+		public List<SuajeEtiqueta> EtiquetaListaSuajes { get; set; }
 
-		public List<Cortador> EtiquetaListaCortadores { get; set; }
+		public List<CortadorEtiqueta> EtiquetaListaCortadores { get; set; }
 
 		public string EtiquetaObservaProduccion { get; set; }
 

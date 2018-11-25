@@ -22,6 +22,6 @@ namespace DataRepositories.Entities
 
 		public bool CortadorEstado { get; set; }
 
-		public ICollection<Etiqueta> SuajeEtiquetas { get; set; }
+		public ICollection<CortadorEtiqueta> CortadorEtiquetas { get; set; }
 	}
 }

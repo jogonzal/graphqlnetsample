@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using DataRepositories.Database;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +21,19 @@ namespace GraphQLSample
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+			var builder = new ConfigurationBuilder()
+				.AddJsonFile("appsettings.json")
+				.AddJsonFile("appSettingsProd.json", true)
+				.AddEnvironmentVariables();
+
+			var config = builder.Build();
+			var connstr = config.GetConnectionString("(default)");
+
+			services.AddDbContext<EtisysContext>(options =>
+			{
+				options.UseSqlServer(connstr);
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
