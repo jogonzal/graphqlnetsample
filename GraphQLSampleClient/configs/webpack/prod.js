@@ -5,6 +5,6 @@ const localProdConfig = require('./localProd');
 
 module.exports = merge(localProdConfig, {
   output: {
-    publicPath: 'https://jorgewebdeployment.blob.core.windows.net/graphqlsample/',
+    publicPath: 'https://jorgewebdeployment.blob.core.windows.net/graphqlsampleclient/',
   },
 });

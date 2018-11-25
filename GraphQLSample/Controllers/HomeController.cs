@@ -50,7 +50,7 @@ namespace RcsServer.Controllers
 #if DEBUG
 				indexHtmlUrl = "http://localhost:8080/index.html";
 #else
-				indexHtmlUrl = "https://jorgewebdeployment.blob.core.windows.net/graphqlclient/index.html";
+				indexHtmlUrl = "https://jorgewebdeployment.blob.core.windows.net/graphqlsampleclient/index.html";
 #endif
 				var result = await httpClient.GetAsync(indexHtmlUrl);
 				var rawHtml = await result.Content.ReadAsStringAsync();
