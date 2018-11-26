@@ -13,12 +13,14 @@ namespace GraphQLSample.GraphQLUtils
 			Field<AgenteType>(
 				"createAgente",
 				arguments: new QueryArguments(
-					new QueryArgument<NonNullGraphType<AgenteInputType>> { Name = "player" }
+					new QueryArgument<NonNullGraphType<AgenteInputType>> { Name = "agente" }
 				),
-				resolve: context =>
+				resolve: (context) =>
 				{
 					var player = context.GetArgument<Agente>("agente");
-					return playerRepository.Agentes.Add(player);
+					playerRepository.Agentes.Add(player);
+					playerRepository.SaveChanges();
+					return player;
 				});
 		}
 	}

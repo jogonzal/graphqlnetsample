@@ -20,6 +20,14 @@ namespace GraphQLSample.GraphQLUtils
 			Field<ListGraphType<AgenteType>>(
 				"agentes",
 				resolve: context => etisysContext.Agentes.ToList());
+
+			Field<ListGraphType<ProveedorType>>(
+				"proveedores",
+				resolve: context => etisysContext.Proveedores.ToList());
+
+			Field<ListGraphType<CuentaGastoType>>(
+				"cuentasgasto",
+				resolve: context => etisysContext.CuentasGasto.ToList());
 		}
 	}
 }

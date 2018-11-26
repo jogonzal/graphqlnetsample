@@ -42,6 +42,8 @@ namespace GraphQLSample
 			services.AddSingleton<GraphQLSampleQuery>();
 			services.AddSingleton<GraphQLSampleMutation>();
 			services.AddSingleton<AgenteType>();
+			services.AddSingleton<ProveedorType>();
+			services.AddSingleton<CuentaGastoType>();
 			services.AddSingleton<AgenteInputType>();
 			var sp = services.BuildServiceProvider();
 			services.AddSingleton<ISchema>(new GraphQLSampleSchema(new FuncDependencyResolver(type => sp.GetService(type))));

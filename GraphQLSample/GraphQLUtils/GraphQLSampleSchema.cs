@@ -8,7 +8,7 @@ namespace GraphQLSample.GraphQLUtils
 		public GraphQLSampleSchema(IDependencyResolver resolver) : base(resolver)
 		{
 			Query = resolver.Resolve<GraphQLSampleQuery>();
-			//Mutation = resolver.Resolve<NHLStatsMutation>();
+			Mutation = resolver.Resolve<GraphQLSampleMutation>();
 		}
 	}
 }
