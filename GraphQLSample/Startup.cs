@@ -1,4 +1,8 @@
 ﻿using DataRepositories.Database;
+using GraphiQl;
+using GraphQL;
+using GraphQL.Types;
+using GraphQLSample.GraphQLUtils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +38,13 @@ namespace GraphQLSample
 			{
 				options.UseSqlServer(connstr);
 			});
+			services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+			services.AddSingleton<GraphQLSampleQuery>();
+			services.AddSingleton<GraphQLSampleMutation>();
+			services.AddSingleton<AgenteType>();
+			services.AddSingleton<AgenteInputType>();
+			var sp = services.BuildServiceProvider();
+			services.AddSingleton<ISchema>(new GraphQLSampleSchema(new FuncDependencyResolver(type => sp.GetService(type))));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +61,7 @@ namespace GraphQLSample
 			//	app.UseHsts();
 			//}
 
+			app.UseGraphiQl();
 			app.UseHttpsRedirection();
 			app.UseMvc(routes =>
 			{
