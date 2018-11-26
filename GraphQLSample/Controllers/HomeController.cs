@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using DataRepositories.Database;
 using HtmlAgilityPack;
 
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,13 @@ namespace RcsServer.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly EtisysContext _context;
+
+		public HomeController(EtisysContext context)
+		{
+			_context = context;
+		}
+
 		private static HtmlNode CreateScriptElementWithSingleObject(string varName, object propertySet)
 		{
 			var htmlDoc = new HtmlDocument();
@@ -62,10 +70,12 @@ namespace RcsServer.Controllers
 			//return View(new HomeViewModel(AuthContext.GetCookie(HttpContext), AuthContext.GetCloudUser(HttpContext)));
 		}
 
-		public IActionResult Error()
+		public string Sample2()
 		{
-			ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-			return View();
+			var agentes = _context.Agentes.ToList();
+			Debug.WriteLine($"I have ${agentes.Count} agentes");
+
+			return "<html><body><p>Jorge</p></body></html>";
 		}
 	}
 }
