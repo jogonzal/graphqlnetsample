@@ -13,7 +13,7 @@ This is a full working example of a GraphQL API and a sample client that uses it
 }
 ```
 
-## Querying all cuentasgasto including the subselections in it
+## Querying all cuentasgasto including provedoores
 ```
 {
   cuentasgasto {
